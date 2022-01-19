@@ -566,10 +566,10 @@ class SequenceGenerator(SequenceGenerator):
 
     @torch.no_grad()
     def _generate(self,
-                  sample,
-                  prefix_tokens=None,
-                  constraints=None,
-                  bos_token=None
+                  sample: Dict[str, Dict[str, Tensor]],
+                  prefix_tokens: Optional[Tensor] = None,
+                  constraints: Optional[Tensor] = None,
+                  bos_token: Optional[int] = None
                   ):
         incremental_states = torch.jit.annotate(
             List[Dict[str, Dict[str, Optional[Tensor]]]],
